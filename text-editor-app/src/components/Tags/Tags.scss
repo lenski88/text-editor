@@ -10,17 +10,9 @@
 
 
   .tag-item {
-    color: $fontsColor;
-    font-family: $fontGoogle;
+    @include tag;
     font-size: 1.8rem;
-    margin: 1rem;
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-    -khtml-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
-                                  
+    margin: 1rem;                           
   }
   .tag-item:hover {
     color: $buttonColorHover;

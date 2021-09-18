@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import "./Notes.scss";
 
+import CreateNotes from "../CreateNotes/CreateNotes";
+
 class Notes extends React.PureComponent {
   static propTypes = {
     notes: PropTypes.array.isRequired, //from Redux
@@ -41,8 +43,8 @@ class Notes extends React.PureComponent {
       )) ||
       (this.props.workMode === 2 && (
         <div className="notes-list">{filterNotes}</div>
-      ))
-      /* (this.props.workMode === 3 && (<CreateNote/>)) */
+      )) ||
+      (this.props.workMode === 3 && <CreateNotes />)
     );
   }
 }

@@ -14,9 +14,19 @@ class Tags extends React.Component {
     workMode: PropTypes.number.isRequired, // from Redux
   };
 
+  state = {
+    filterNotes: this.props.notes,
+  };
+
   filterNotes = (eo) => {
     let tag = eo.target.id;
-    this.props.dispatch(filterNotes(tag));
+    let newState = this.props.notes.filter((i) => {
+      return i.tag === tag;
+    });
+    this.setState({
+      filterNotes: newState,
+    });
+    this.props.dispatch(filterNotes(newState));
     this.props.dispatch(changeMode(2));
   };
   allNotes = () => {
@@ -24,28 +34,30 @@ class Tags extends React.Component {
     this.props.dispatch(changeMode(1));
   };
   render() {
-    let listTags = this.props.notes.map((i) => {
+    let list = [];
+    for (let i = 0; i < this.props.notes.length; i++) {
+      if (list.includes(this.props.notes[i].tag)) {
+        continue;
+      } else {
+        list.push(this.props.notes[i].tag);
+      }
+    }
+    let listTags = list.map((i) => {
       return (
-        <span
-          key={i.id}
-          className="tag-item"
-          id={i.tag}
-          onClick={this.filterNotes}
-        >
-          {i.tag}
+        <span key={i} className="tag-item" id={i} onClick={this.filterNotes}>
+          {i}
         </span>
       );
     });
-    return (
-      this.props.workMode === 1 || this.props.workMode === 2 ? (
-        <div className="tags-list">
-          <span className="tag-item" onClick={this.allNotes}>
-            All notes
-          </span>
-          {listTags}
-        </div>
-      ): null
-    );
+
+    return this.props.workMode === 1 || this.props.workMode === 2 ? (
+      <div className="tags-list">
+        <span className="tag-item" onClick={this.allNotes}>
+          All notes
+        </span>
+        {listTags}
+      </div>
+    ) : null;
   }
 }
 

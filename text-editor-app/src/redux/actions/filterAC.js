@@ -1,10 +1,10 @@
 export const ALL_NOTES = "ALL_NOTES";
 export const FILTER_NOTES = 'FILTER_NOTES'
 
-export const filterNotes = function (tag) {
+export const filterNotes = function (newState) {
     return {
         type: FILTER_NOTES,
-        payload:tag
+        payload:newState
     }
 }
 

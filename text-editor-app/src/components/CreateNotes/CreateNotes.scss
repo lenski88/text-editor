@@ -1,0 +1,57 @@
+@import "../../styles/Variables.scss";
+
+.create-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+
+  .create-note-input > textarea {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid $fontsColor;
+    border-radius: 0.5rem;
+    color: $fontsColor;
+    font-family: $fontGoogle;
+    font-size: 1rem;
+    width: 95%;
+  }
+
+  .create-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .available-btn {
+      @include btn;
+      margin: 1rem;
+      font-size: 1.2rem;
+      padding: 0.7rem;
+      margin: 1rem;
+    }
+    .available-btn:hover {
+      background-color: $buttonColorHover;
+    }
+    .disabled-btn {
+      @include btn;
+      margin: 1rem;
+      font-size: 1.2rem;
+      padding: 0.7rem;
+      margin: 1rem;
+      opacity: 0.5;
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include tag;
+    font-size: 1rem;
+    margin: 1.5rem;
+  }
+}

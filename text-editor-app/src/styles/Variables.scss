@@ -13,5 +13,16 @@ $fontGoogle: "Open Sans", sans-serif;
   color: $fontsColor;
   border-radius: 0.5rem;
   border: none;
-  font-family: $fontGoogle; 
+  font-family: $fontGoogle;
+}
+
+@mixin tag() {
+  color: $fontsColor;
+  font-family: $fontGoogle;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
