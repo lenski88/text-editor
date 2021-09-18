@@ -1,0 +1,29 @@
+@import "../../styles/Variables.scss";
+
+.tags-list {
+  margin: 3rem;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap:wrap;
+
+
+  .tag-item {
+    color: $fontsColor;
+    font-family: $fontGoogle;
+    font-size: 1.8rem;
+    margin: 1rem;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+                                  
+  }
+  .tag-item:hover {
+    color: $buttonColorHover;
+    cursor: default;
+  }
+}

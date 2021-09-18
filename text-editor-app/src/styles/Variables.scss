@@ -1,0 +1,17 @@
+//Colors
+$fontsColor: #ebdfdf;
+$buttonColor: maroon;
+$buttonColorHover: rgb(16, 24, 99);
+
+//font
+$fontGoogle: "Open Sans", sans-serif;
+
+//mixins
+
+@mixin btn() {
+  background-color: $buttonColor;
+  color: $fontsColor;
+  border-radius: 0.5rem;
+  border: none;
+  font-family: $fontGoogle; 
+}
