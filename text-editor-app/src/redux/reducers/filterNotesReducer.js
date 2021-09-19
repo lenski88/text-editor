@@ -1,8 +1,8 @@
 import { ALL_NOTES, FILTER_NOTES } from "../actions/filterAC";
 
-let notesList = require("../../notice.json");
+let initialState = JSON.parse(localStorage.state)
 
-const filterNotesReducer = (state = notesList, action) => {
+const filterNotesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ALL_NOTES:
       return state;

@@ -1,11 +1,16 @@
 import { CREATE_NOTE, DELETE_NOTE, CHANGE_NOTE } from "../actions/createNoteAC";
 
-let notesList = require("../../notice.json");
+let initialState = JSON.parse(localStorage.state);
 
-const notesReducer = (state = notesList, action) => {
+const notesReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_NOTE: {
-      let lastId = state[state.length - 1].id;
+      let lastId;
+      if (!state.length) {
+        lastId = -1;
+      } else {
+        lastId = state[state.length - 1].id;
+      }
       let newNote = {
         id: lastId + 1,
         note: action.note,
@@ -14,6 +19,7 @@ const notesReducer = (state = notesList, action) => {
       let newState = state;
       newState = state.slice();
       newState = [...newState, newNote];
+      localStorage.setItem("state", JSON.stringify(newState));
       return newState;
     }
     case DELETE_NOTE: {
@@ -22,6 +28,7 @@ const notesReducer = (state = notesList, action) => {
       newState = newState.filter((i) => {
         return i.id !== Number(action.payload);
       });
+      localStorage.setItem("state", JSON.stringify(newState));
       return newState;
     }
     case CHANGE_NOTE: {
@@ -31,6 +38,7 @@ const notesReducer = (state = notesList, action) => {
         return i.id === action.payload.id;
       });
       newState.splice(indexNote, 1, action.payload);
+      localStorage.setItem("state", JSON.stringify(newState));
       return newState;
     }
     default:
