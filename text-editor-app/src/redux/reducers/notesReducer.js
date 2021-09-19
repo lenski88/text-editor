@@ -1,5 +1,6 @@
 import { CREATE_NOTE, DELETE_NOTE, CHANGE_NOTE } from "../actions/createNoteAC";
 
+localStorage.setItem('state','[]')
 let initialState = JSON.parse(localStorage.state);
 
 const notesReducer = (state = initialState, action) => {
