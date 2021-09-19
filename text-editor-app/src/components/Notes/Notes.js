@@ -19,11 +19,18 @@ class Notes extends React.PureComponent {
     workMode: PropTypes.number.isRequired, // from Redux
   };
 
+  state = {
+    editNote: null
+  }
+
   deleteNote = (eo) => {
     this.props.dispatch(deleteNote(eo.target.name));
   };
 
-  editNote = () => {
+  editNote = (eo) => {
+    this.setState({
+      editNote: eo.target.name
+    })
     this.props.dispatch(changeMode(4));
   };
 
@@ -67,7 +74,7 @@ class Notes extends React.PureComponent {
         <div className="notes-list">{filterNotes}</div>
       )) ||
       (this.props.workMode === 3 && <CreateNotes />) ||
-      (this.props.workMode === 4 && <EditNote />)
+      (this.props.workMode === 4 && <EditNote  editNote={this.state.editNote}/>)
     );
   }
 }

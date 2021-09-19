@@ -1,0 +1,45 @@
+@import "../../styles/Variables.scss";
+
+.edit-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+
+  .edit-note-input > textarea {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid $fontsColor;
+    border-radius: 0.5rem;
+    color: $fontsColor;
+    font-family: $fontGoogle;
+    font-size: 1rem;
+    width: 95%;
+  }
+
+  .edit-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .avl-btn {
+      @include btn;
+      margin: 1rem;
+      font-size: 1.2rem;
+      padding: 0.7rem;
+      margin: 1rem;
+    }
+    .avl-btn:hover {
+      background-color: $buttonColorHover;
+    }
+    .dis-btn {
+      @include btn;
+      margin: 1rem;
+      font-size: 1.2rem;
+      padding: 0.7rem;
+      margin: 1rem;
+      opacity:.5
+    }
+  }
+}

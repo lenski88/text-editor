@@ -1,4 +1,4 @@
-import { CREATE_NOTE, DELETE_NOTE } from "../actions/createNoteAC";
+import { CREATE_NOTE, DELETE_NOTE, CHANGE_NOTE } from "../actions/createNoteAC";
 
 let notesList = require("../../notice.json");
 
@@ -22,7 +22,15 @@ const notesReducer = (state = notesList, action) => {
       newState = newState.filter((i) => {
         return i.id !== Number(action.payload);
       });
-      console.log(newState)
+      return newState;
+    }
+    case CHANGE_NOTE: {
+      let newState = state;
+      newState = state.slice();
+      let indexNote = newState.findIndex((i) => {
+        return i.id === action.payload.id;
+      });
+      newState.splice(indexNote, 1, action.payload);
       return newState;
     }
     default:

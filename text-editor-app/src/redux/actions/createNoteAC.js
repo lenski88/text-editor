@@ -1,5 +1,6 @@
 export const CREATE_NOTE = 'CREATE_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
+export const CHANGE_NOTE = 'CHANGE_NOTE';
 
 export const createNote = function (value, tag) {
     return {
@@ -16,3 +17,9 @@ export const deleteNote = function (id) {
     }
 }
 
+export const changeNote = function (note) {
+    return {
+        type:CHANGE_NOTE,
+        payload:note
+    }
+}

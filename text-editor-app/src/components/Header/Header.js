@@ -19,10 +19,10 @@ class Header extends React.Component {
       <div className="header">
         <button
           className={
-            this.props.workMode === 3 ? "disabled-button" : "available-button"
+            this.props.workMode === 3 || this.props.workMode === 4 ? "disabled-button" : "available-button"
           }
           onClick={this.newNote}
-          disabled={this.props.workMode === 3 ? true : false}
+          disabled={this.props.workMode === 3 || this.props.workMode === 4 ? true : false}
         >
           Create note
         </button>
