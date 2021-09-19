@@ -4,7 +4,13 @@ import { connect } from "react-redux";
 
 import "./Notes.scss";
 
+//componets
 import CreateNotes from "../CreateNotes/CreateNotes";
+import EditNote from "../EditNote/EditNote";
+
+//AC
+import { changeMode } from "../../redux/actions/workModeAC";
+import { deleteNote } from "../../redux/actions/createNoteAC";
 
 class Notes extends React.PureComponent {
   static propTypes = {
@@ -13,14 +19,26 @@ class Notes extends React.PureComponent {
     workMode: PropTypes.number.isRequired, // from Redux
   };
 
+  deleteNote = (eo) => {
+    this.props.dispatch(deleteNote(eo.target.name));
+  };
+
+  editNote = () => {
+    this.props.dispatch(changeMode(4));
+  };
+
   render() {
     let notesList = this.props.notes.map((i) => {
       return (
         <div key={i.id} className="notes-item">
           {i.note}
           <div className="btn">
-            <button onClick={this.click}>Edit</button>
-            <button>Delete</button>
+            <button name={i.id} onClick={this.editNote}>
+              Edit
+            </button>
+            <button name={i.id} onClick={this.deleteNote}>
+              Delete
+            </button>
           </div>
         </div>
       );
@@ -31,8 +49,12 @@ class Notes extends React.PureComponent {
         <div key={i.id} className="notes-item">
           {i.note}
           <div className="btn">
-            <button onClick={this.click}>Edit</button>
-            <button>Delete</button>
+            <button name={i.id} onClick={this.editNote}>
+              Edit
+            </button>
+            <button name={i.id} onClick={this.deleteNote}>
+              Delete
+            </button>
           </div>
         </div>
       );
@@ -44,7 +66,8 @@ class Notes extends React.PureComponent {
       (this.props.workMode === 2 && (
         <div className="notes-list">{filterNotes}</div>
       )) ||
-      (this.props.workMode === 3 && <CreateNotes />)
+      (this.props.workMode === 3 && <CreateNotes />) ||
+      (this.props.workMode === 4 && <EditNote />)
     );
   }
 }
