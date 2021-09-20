@@ -11,6 +11,7 @@ import EditNote from "../EditNote/EditNote";
 //AC
 import { changeMode } from "../../redux/actions/workModeAC";
 import { deleteNote } from "../../redux/actions/createNoteAC";
+import { deleteNoteFilter } from "../../redux/actions/filterAC";
 
 class Notes extends React.PureComponent {
   static propTypes = {
@@ -25,6 +26,9 @@ class Notes extends React.PureComponent {
 
   deleteNote = (eo) => {
     this.props.dispatch(deleteNote(eo.target.name));
+    if(this.props.workMode === 2) {
+      this.props.dispatch(deleteNoteFilter(eo.target.name))
+    }
   };
 
   editNote = (eo) => {
