@@ -41,7 +41,9 @@ const notesReducer = (state = initialState, action) => {
       let indexNote = newState.findIndex((i) => {
         return i.id === action.payload.id;
       });
-      newState.splice(indexNote, 1, action.payload);
+      let newNote = action.payload;
+      newNote = {...newNote,tag:newNote.tag.split(' ')[0]}
+      newState.splice(indexNote, 1, newNote);
       localStorage.setItem("state", JSON.stringify(newState));
       return newState;
     }
